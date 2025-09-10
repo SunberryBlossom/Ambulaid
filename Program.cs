@@ -44,27 +44,22 @@
 
 
             // If statement to categorize alarm color based on reported symptoms
-            if ((chestPain == "y" || breathingDiff == "y") || majorBleeding == "y" || patientTemp > 40 && (patientAge < 1 || patientAge > 75))
-            {
-                alarmColor = "RED";
-            }
-            else if (patientTemp >= 38.5 || painLevel >= 7) 
-            {
-                alarmColor = "YELLOW";
-            }
-            else
-            {
-                alarmColor = "GREEN";
-            }
-
+            if ((chestPain == "y" || breathingDiff == "y") || majorBleeding == "y" || patientTemp > 40 && (patientAge < 1 || patientAge > 75)) alarmColor = "RED";
+            else if (patientTemp >= 38.5 || painLevel >= 7) alarmColor = "YELLOW";
+            else alarmColor = "GREEN";
+            
 
             // alarm message concatenation of positive symptoms.
             if (chestPain == "y") alarmMessage += "chestpains. ";
             if (breathingDiff == "y") alarmMessage += "Difficulty breathing. ";
             if (majorBleeding == "y") alarmMessage += "A major bleeding. ";
+            if (painLevel >= 7) alarmMessage += $"Current pain: {painLevel}. ";
+
+            // separate concats for raised temperature based on age-requirements. Seniors and babies will have their age added to motivation, whilst adults won't.
             if (patientTemp > 40 && (patientAge < 1 || patientAge > 75)) alarmMessage += $"Patient current temperature: {patientTemp}, age {patientAge}. ";
             if (patientTemp >= 38.5 && (patientAge >= 1 && patientAge <= 75)) alarmMessage += $"Patient current temperature: {patientTemp}. ";
-            if (painLevel >= 7) alarmMessage += $"Patient current temperature: {patientTemp}. Current pain: {painLevel}. ";
+
+            // If none of the symptoms have reached RED or YELLOW threshold, simply write that the color is GREEN due to no major symptoms.
             if (alarmMessage == "") alarmMessage = "No major symptoms.";
 
 
@@ -72,7 +67,6 @@
             Console.WriteLine($"\n\t\tPatient name: {patientName}");
             Console.WriteLine($"\t\tPriority: {alarmColor}");
             Console.WriteLine($"\t\tMotivation: {alarmMessage}");
-
         }
     }
 }
