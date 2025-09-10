@@ -56,8 +56,8 @@
             if (painLevel >= 7) alarmMessage += $"Current pain: {painLevel}. ";
 
             // separate concats for raised temperature based on age-requirements. Seniors and babies will have their age added to motivation, whilst adults won't.
-            if (patientTemp > 40 && (patientAge < 1 || patientAge > 75)) alarmMessage += $"Patient current temperature: {patientTemp}, age {patientAge}. ";
-            if (patientTemp >= 38.5 && (patientAge >= 1 && patientAge <= 75)) alarmMessage += $"Patient current temperature: {patientTemp}. ";
+            if (patientTemp > 40 && (patientAge < 1 || patientAge > 75)) alarmMessage += $"Patient current temperature: {patientTemp}C, age {patientAge}. ";
+            if (patientTemp >= 38.5 && (patientAge >= 1 && patientAge <= 75)) alarmMessage += $"Patient current temperature: {patientTemp}C. ";
 
             // If none of the symptoms have reached RED or YELLOW threshold, simply write that the color is GREEN due to no major symptoms.
             if (alarmMessage == "") alarmMessage = "No major symptoms.";
