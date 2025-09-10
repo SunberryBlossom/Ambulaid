@@ -57,12 +57,14 @@
                 alarmColor = "GREEN";
             }
 
+
             // alarm message concatenation of positive symptoms.
             if (chestPain == "y") alarmMessage += "chestpains. ";
             if (breathingDiff == "y") alarmMessage += "Difficulty breathing. ";
             if (majorBleeding == "y") alarmMessage += "A major bleeding. ";
-            if (patientTemp > 40 && (patientAge < 1 || patientAge > 75)) alarmMessage += $"Patient current temperature: {patientTemp}, age {patientAge}";
-            if (patientTemp >= 38.5 || painLevel >= 7) alarmMessage += $"Patient current temperature: {patientTemp}. Current pain: {painLevel}.";
+            if (patientTemp > 40 && (patientAge < 1 || patientAge > 75)) alarmMessage += $"Patient current temperature: {patientTemp}, age {patientAge}. ";
+            if (patientTemp >= 38.5 && (patientAge >= 1 && patientAge <= 75)) alarmMessage += $"Patient current temperature: {patientTemp}. ";
+            if (painLevel >= 7) alarmMessage += $"Patient current temperature: {patientTemp}. Current pain: {painLevel}. ";
             if (alarmMessage == "") alarmMessage = "No major symptoms.";
 
 
